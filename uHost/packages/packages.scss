@@ -1,0 +1,92 @@
+@import '../_shared.scss';
+
+.background {
+	background: url('../images/plans-background.jpg') center/cover;
+	filter: grayscale(40%);
+	position: fixed;
+	height: 100vh;
+	width: 100vw;
+	z-index: -1;
+}
+
+main {
+	width: 100%;
+	margin: auto;
+	max-width: 90rem;
+
+	.package {
+		position: relative;
+		overflow: hidden;
+		width: 80%;
+		margin: 1rem 0;
+		background: transparentize(lighten(#0e4f1f, 71%), 0.1);
+		border: 4px solid #0e4f1f;
+		border-left: none;
+		
+		@include media-min-width(90rem) {
+			border-left: 4px solid #0e4f1f;
+		}
+
+		a {
+			color: inherit;
+			display: block;
+			padding: 2rem;
+			text-decoration: none;
+		}
+
+		&__badge {
+			// display: inline-block;
+			position: absolute;
+			color: white;
+			background-color: #ff5454;
+			font-size: 0.8rem;
+			padding: 0.5rem 2.5rem;
+			top: 0;
+			right: 0;
+			transform: rotate(45deg) translate(3rem, -0.5rem);
+		}
+
+		&__subtitle {
+			color: #858585;
+		}
+
+		&__info {
+			color: #0e4f1f;
+			border: 2px solid #0e4f1f;
+			background-color: white;
+			padding: 1rem;
+			font-size: 1.2rem;
+		}
+
+		&:hover,
+		&:active {
+			border-color: #ff5454;
+		}
+
+		&#free-plan {
+			margin-left: auto;
+			margin-right: 0;
+			text-align: right;
+			border-right: none;
+			border-left: 4px solid #0e4f1f;
+			
+			@include media-min-width(90rem) {
+				border-right: 4px solid #0e4f1f;
+			}
+
+			&:hover,
+			&:active {
+				border-color: #ff5454;
+			}
+		}
+
+		&#premium-plan {
+			background-color: transparentize(#0e4f1f, 0.1);
+			color: white;
+
+			.package__subtitle {
+				color: lighten(#858585, 20%);
+			}
+		}
+	}
+}

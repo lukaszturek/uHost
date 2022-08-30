@@ -1,0 +1,67 @@
+@import '../_shared.scss';
+
+main {
+	padding: 0 1rem;
+
+	.signup-title {
+		color: #ff5454;
+		font-size: 1.8rem;
+		text-align: center;
+		margin-top: 2rem;
+	}
+
+	.signup-form {
+		display: grid;
+		grid-auto-rows: 2rem;
+		row-gap: 0.5rem;
+		padding-top: 1rem;
+
+		@include media-min-width(40rem) {
+			grid-template-columns: 10rem 20rem;
+			justify-content: center;
+			row-gap: 1rem;
+
+			&__checkbox {
+				grid-column: span 2;
+			}
+		}
+
+		label {
+			font-weight: bold;
+			align-self: center;
+		}
+
+		select,
+		input {
+			font: inherit;
+
+			&:focus {
+				background-color: lighten(#0e4f1f, 71%);
+				border-color: #2ddf5c;
+			}
+		}
+
+		:invalid,
+		select.invalid,
+		input.invalid {
+			border: 1px solid red;
+			border-radius: 0.2rem;
+			background: lighten(red, 35%);
+		}
+
+		button[type="submit"] {
+			background-color: #0e4f1f;
+			color: white;
+			border: 1px solid #0e4f1f;
+			border-radius: 0.5rem;
+			font: inherit;
+			font-weight: bold;
+
+			&:hover,
+			&:active {
+				background-color: white;
+				color: #0e4f1f;
+			}
+		}
+	}
+}

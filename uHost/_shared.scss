@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400,900');
+@import url('https://fonts.googleapis.com/css?family=Anton');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+@mixin media-min-width($width) {
+	@media (min-width: $width) {
+		@content;
+	}
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
+	display: grid;
+	grid-template-rows: 3.5rem auto fit-content(8rem);
+	grid-template-areas: "header""main""footer";
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.backdrop {
+	display: none;
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	top: 0;
+	height: 100vh;
+	width: 100vw;
+	z-index: 1000;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	top: 20%;
+	left: 30%;
+	width: 40%;
+	padding: 1rem;
+	z-index: 1001;
+	background-color: white;
+	border: 1px solid #ccc;
+	box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+
+	.modal__title {
+		margin-top: 0;
+		text-align: center;
+	}
+
+	.modal__actions {
+		text-align: center;
+
+		.modal__action {
+			text-decoration: none;
+			padding: 0.5rem 1rem;
+			height: 100%;
+			border: none;
+			color: white;
+			font: inherit;
+			background-color: #0e4f1f;
+			cursor: pointer;
+
+			&:hover,
+			&:active {
+				background-color: lighten(#0e4f1f, 25%);
+			}
+
+			&--negative {
+				background-color: red;
+
+				&:hover,
+				&:active {
+					background-color: lighten(red, 25%);
+					;
+				}
+			}
+		}
+	}
+}
+
+.main-header {
+	padding: 0.5rem 1rem;
+	width: 100%;
+	background: #2ddf5c;
+	grid-area: header;
+	position: fixed;
+	top: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	z-index: 100;
+
+	.main-header__toggle-button {
+		display: inline-block;
+		border: none;
+		background: none;
+		vertical-align: middle;
+		cursor: pointer;
+
+		div {
+			background: black;
+			padding: 2px 20px;
+			margin: 8px 0;
+		}
+
+		@include media-min-width(40rem) {
+			display: none;
+		}
+	}
+
+	.main-header__logo img {
+		height: 2.5rem;
+		vertical-align: middle;
+
+	}
+
+	.main-nav {
+		display: none;
+
+		@include media-min-width(40rem) {
+			display: block;
+		}
+
+		.main-nav__items {
+			margin: 0;
+			list-style: none;
+			display: flex;
+
+			.main-nav__item {
+				margin: 0 1rem;
+
+				a {
+					text-decoration: none;
+					font-weight: bold;
+					color: #0e4f1f;
+					padding: 0.25rem 0;
+
+					&:hover,
+					&:active {
+						color: white;
+						border-bottom: 0.25rem solid white;
+					}
+				}
+			}
+
+			.main-nav__item--cta {
+				animation: wiggle 400ms 1s 8 ease-out;
+
+				a {
+					padding: 0.5rem 1rem;
+					background: #ff1b68;
+					color: white;
+					border-radius: 0.5rem;
+
+					&:hover,
+					&:active {
+						background-color: white;
+						color: #ff1b68;
+					}
+				}
+			}
+		}
+	}
+
+}
+
+.mobile-nav {
+	display: none;
+	position: fixed;
+	background-color: white;
+	height: 100vh;
+	width: 80vw;
+	top: 0;
+	z-index: 1001;
+
+	.mobile-nav__items {
+		height: 100%;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		.mobile-nav__item {
+			margin: 1rem;
+
+			a {
+				text-decoration: none;
+				font-weight: bold;
+				font-size: 1.5rem;
+				color: #0e4f1f;
+			}
+
+			&--cta a {
+				padding: 0.5rem 1rem;
+				background: #ff1b68;
+				color: white;
+				border-radius: 0.5rem;
+
+				&:hover,
+				&:active {
+					background-color: white;
+					color: #ff1b68;
+				}
+			}
+		}
+
+	}
+}
+
+main {
+	grid-area: main;
+}
+
+.main-footer {
+	background: black;
+	height: 5rem;
+	margin-top: 3rem;
+	grid-area: footer;
+
+	.main-footer__items {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+
+		.main-footer__item {
+			margin: 0 1rem;
+
+			a {
+				text-decoration: none;
+				color: white;
+
+				&:hover,
+				&:active {
+					color: #858585;
+				}
+			}
+		}
+	}
+}
+
+.open {
+	display: block !important;
+}
+
+@keyframes wiggle {
+	0% {
+		transform: rotateZ(0);
+	}
+	50% {
+		transform: rotateZ(-10deg);
+	}
+	100% {
+		transform: rotateZ(10deg);
+	}
+}

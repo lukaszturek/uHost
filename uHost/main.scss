@@ -1,0 +1,176 @@
+@import '_shared.scss';
+
+main {
+	.product-overview {
+		background: linear-gradient(to top, rgba(80, 68, 18, 0.6) 10%, transparent), url("../images/freedom.jpg") center/cover;
+		background-position: 10% 25%;
+		width: 100%;
+		height: 40vh;
+		position: relative;
+
+		h1 {
+			color: white;
+			font-family: "Anton", "sans-serif";
+			position: absolute;
+			bottom: 5%;
+			left: 3%;
+
+			@include media-min-width(40rem) {
+				font-size: 3.7vw;
+			}
+		}
+	}
+
+	.plans {
+		margin: 0 auto;
+
+		.plans__title {
+			text-align: center;
+			color: #2ddf5c;
+		}
+
+		.plans__list {
+			@include media-min-width(40rem) {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.plan {
+				margin: 0.5rem 0;
+				padding: 1rem;
+				// background: #d5ffdc;
+				background: lighten(#0e4f1f, 71%);
+				text-align: center;
+
+				@include media-min-width(40rem) {
+					width: 30%;
+					min-width: 13rem;
+					max-width: 25rem;
+					height: 28rem;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: space-between;
+				}
+
+				&__title {
+					color: #0e4f1f;
+				}
+
+				&__price {
+					color: #858585;
+				}
+
+				&__features {
+					list-style: none;
+					margin: 0;
+					padding: 0;
+
+					.plan__feature {
+						margin: 0.5rem 0;
+					}
+				}
+
+				&__button {
+					background-color: #0e4f1f;
+					color: white;
+					font: inherit;
+					font-weight: bold;
+					padding: 0.5rem;
+					border: 1px solid #0e4f1f;
+					border-radius: 0.5rem;
+
+					&:hover,
+					&:active {
+						background-color: white;
+						color: #0e4f1f;
+						cursor: pointer;
+					}
+				}
+			}
+
+			.plan--highlighted {
+				background: lighten(#0e4f1f, 25%);
+				height: 30rem;
+				box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+				z-index: 50;
+
+				.plan__annotation {
+					width: 100%;
+					color: lighten(#0e4f1f, 25%);
+					background-color: white;
+					padding: 0.5rem;
+					border-radius: 0.5rem;
+					box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+				}
+
+				.plan__title,
+				.plan__description,
+				.plan__feature {
+					color: white;
+				}
+
+				.plan__price {
+					color: #0e4f1f;
+				}
+
+				.plan__features {
+					list-style: none;
+					margin: 0;
+					padding: 0;
+
+					.plan__feature {
+						margin: 0.5rem 0;
+					}
+				}
+			}
+		}
+	}
+
+	.key-features {
+		margin-top: 5rem;
+		padding: 1rem;
+		color: white;
+		background-color: #ff1b68;
+		text-align: center;
+
+		&__title {
+			margin: 2rem;
+		}
+
+		&__list {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			width: 100%;
+
+			@include media-min-width(40rem) {
+				display: flex;
+				justify-content: space-around;
+			}
+
+			.key-feature {
+
+				@include media-min-width(40rem) {
+					width: 30%;
+				}
+
+				&__image {
+					height: 128px;
+					width: 128px;
+					padding: 1.5rem;
+					margin: auto;
+					background-color: lighten(#ff1b68, 35%);
+					border: 2px solid black;
+					border-radius: 50%;
+				}
+
+				&__description {
+					font-size: 1.2rem;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+}
